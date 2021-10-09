@@ -19,28 +19,24 @@ function writePassword() {
 function generatePassword() {
   var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be more than 12 but less than 128.");
 
-  var numbers = confirm("Do you want numbers in your password?");
+  var numbers = confirm("Do you want to include numbers in your password");
 
-  var lowerCases = confirm("Do you want lowercases in your password?");
+  var special = confirm("Do you want to include special characters in your password?");
 
-  var upperCases = confirm("Do you want uppercases in your password?");
+  var upperCases = confirm("Do you want to included upper case letters in your password?");
 
-  var special = confirm("Do you want special characters in your password?");
-  // this is a minimum count for numbers, lowerCases, upperCases & specialCharacters
+  var lowerCases = confirm("Do you want to include lower case letters in your password?");
+  
   var minimumCount = 0;
 
-
- // Empty minimums for numbers, lowerCases, upperCases & specialCharacters
 
  var minimumNumbers = "";
  var minimumLowerCases = "";
  var minimumUpperCases = "";
  var minimumSpecialCharacters = "";
 
-
-  
- // Generator functions**
- var functionArray = {
+// Generator functions**
+var functionArray = {
   getNumbers: function() {
     return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
   },
@@ -60,8 +56,7 @@ function generatePassword() {
 };
 
 
-  // Checks to make sure user selected ok for all and uses empty minimums from above
-
+ 
   if (numbers === true) {
     minimumNumbers = functionArray[0];
     minimumCount++;
@@ -69,7 +64,7 @@ function generatePassword() {
   }
 
   if (lowerCases === true) {
-    minimumLowerCases = functionArray.getNumbers();
+    minimumLowerCases = functionArray.getlowerCases();
     minimumCount++;
 
   }
@@ -86,7 +81,7 @@ function generatePassword() {
 
   }
 
-  // empty string variable for the for loop below
+ 
   var randomPasswordGenerated = "";
 
   // loop getting random characters
@@ -97,7 +92,7 @@ function generatePassword() {
 
   }
 
-  // to make sure characters are added to the password
+  
   randomPasswordGenerated += minimumNumbers;
   randomPasswordGenerated += minimumLowerCases;
   randomPasswordGenerated += minimumUpperCases;
