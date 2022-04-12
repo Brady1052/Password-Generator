@@ -20,9 +20,9 @@ function generatePassword() {
     console.log(passwordLength)
   
     var numbers = confirm("Do you want to include numbers in your password");
-    console.log(numbers)
+    
     var special = confirm("Do you want to include special characters in your password?");
-    console.log(special)
+   
     var upperCases = confirm("Do you want to included upper case letters in your password?");
   
     var lowerCases = confirm("Do you want to include lower case letters in your password?");
@@ -44,6 +44,9 @@ function generatePassword() {
    if(lowerCases){
      lowerCaseCharacter(5);
    }
+   if(upperCases){
+     upperCaseCharacter(5)
+   }
   };
 
 
@@ -58,6 +61,19 @@ function generatePassword() {
     console.log(result)
     password.push(result)
     }
+
+       //Function for generating a random uppercase character
+  function upperCaseCharacter(length){
+    let result = '';
+    const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const upperCaseCharsLength = upperCaseChars.length;
+    for (var i = 0; i < length; i++){
+      result += upperCaseChars.charAt(Math.floor(Math.random()* upperCaseCharsLength))
+    }
+    console.log(result)
+    password.push(result)
+    }
+    
 
 
     //Function for generating a random lowercase character
