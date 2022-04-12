@@ -11,40 +11,58 @@ let password = [];
 function generatePassword() {
 
   //Function begins by starting with prompts
-    var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be at least 8 characters but less than or equal to 128.");
-    console.log(passwordLength)
-  
     var numbers = confirm("Do you want to include numbers in your password");
+    if(numbers){
+     var numbersLength = prompt('Please enter the amount of numbers you want to include in your password')
+    }
     
     var special = confirm("Do you want to include special characters in your password?");
+    if(special){
+      var specialCharacterLength =  prompt('Please enter the amount of special characters you would like to include in your password')
+    }
    
     var upperCases = confirm("Do you want to included upper case letters in your password?");
+    if(upperCases){
+      var upperCaseLength =  prompt('Please enter the amount of upper case characters you would like to include in your password')
+    }
   
     var lowerCases = confirm("Do you want to include lower case letters in your password?");
+    if(lowerCases){
+      var lowerCaseLength =  prompt('Please enter the amount of lower case characters you would like to include in your password')
+    }
+  
     
-    var minimumCount = 0;
 //Begins evaluation of the user's response
 
 //If the user selected yes to numbers then generate a random number between 1 and 9
     if (numbers){
-      var number = Math.floor((Math.random() * 10) + 1);  
-      password.push(number)      
+     randomNumber(numbersLength)
     }
     //If the user selected yes to special characters then generate a random special character
    if (special){
-   specialCharacter(5)
+   specialCharacter(specialCharacterLength)
    }
    if(lowerCases){
-     lowerCaseCharacter(5);
+     lowerCaseCharacter(lowerCaseLength);
    }
    if(upperCases){
-     upperCaseCharacter(5)
+     upperCaseCharacter(upperCaseLength)
    }
-   //Displays  generated password
+   //Displays generated password
    var randomPassword = password.join('')
    passwordText.textContent = randomPassword;
   };
 
+    //Function for generating a random number
+    function randomNumber(length){
+      let result = '';
+      const numbers = '123456789'
+      const numbersLength = numbers.length;
+      for (var i = 0; i < length; i++){
+        result += numbers.charAt(Math.floor(Math.random()* numbersLength))
+      }
+      password.push(result)
+      }
 
     //Function for generating a special character
   function specialCharacter(length){
@@ -54,7 +72,6 @@ function generatePassword() {
     for (var i = 0; i < length; i++){
       result += specialChars.charAt(Math.floor(Math.random()* specialCharLength))
     }
-    console.log(result)
     password.push(result)
     }
 
@@ -66,7 +83,6 @@ function generatePassword() {
     for (var i = 0; i < length; i++){
       result += upperCaseChars.charAt(Math.floor(Math.random()* upperCaseCharsLength))
     }
-    console.log(result)
     password.push(result)
     }
     
@@ -80,7 +96,6 @@ function generatePassword() {
     for (var i = 0; i < length; i++){
       result += lowerCaseChars.charAt(Math.floor(Math.random()* lowerCaseCharsLength))
     }
-    console.log(result)
     password.push(result)
     }
     
