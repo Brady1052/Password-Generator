@@ -1,11 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
-// Special characters for the function created
-const specialCharacters = "!@#$%^&*()";
-const generateButton = document.getElementById('generateBtn')
-generateBtn.addEventListener('click', writePassword)
-
+let password = [];
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -15,90 +10,61 @@ function writePassword() {
 
 }
 
-// Prompts that come up after you click generate password
+//Beginning of main function
 function generatePassword() {
-  var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be more than 12 but less than 128.");
 
-  var numbers = confirm("Do you want to include numbers in your password");
-
-  var special = confirm("Do you want to include special characters in your password?");
-
-  var upperCases = confirm("Do you want to included upper case letters in your password?");
-
-  var lowerCases = confirm("Do you want to include lower case letters in your password?");
+  //Function begins by starting with prompts
+    var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be at least 9 characters but less than or equal to 128.");
+    console.log(passwordLength)
   
-  var minimumCount = 0;
-
-
- var minimumNumbers = "";
- var minimumLowerCases = "";
- var minimumUpperCases = "";
- var minimumSpecialCharacters = "";
-
-// Generator functions**
-var functionArray = {
-  getNumbers: function() {
-    return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-  },
-
-  getLowerCases: function() {
-    return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-  },
-
-  getUpperCases: function() {
-    return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-  },
-
-  getSpecialCharacters: function() {
-    return specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
-  }
-
-};
-
-
- 
-  if (numbers === true) {
-    minimumNumbers = functionArray[0];
-    minimumCount++;
-
-  }
-
-  if (lowerCases === true) {
-    minimumLowerCases = functionArray.getlowerCases();
-    minimumCount++;
-
-  }
-
-  if (upperCases === true) {
-    minimumUpperCases = functionArray.getUpperCases();
-    minimumCount++;
-
-  }
-
-  if (special === true) {
-    minimumSpecialCharacters = functionArray.getSpecialCharacters();
-    minimumCount++;
-
-  }
-
- 
-  var randomPasswordGenerated = "";
-
-  // loop getting random characters
-  for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-    var randomNumberPicked = Math.floor(Math.random() * 4);
-
-    randomPasswordGenerated += randomNumberPicked;
-
-  }
-
+    var numbers = confirm("Do you want to include numbers in your password");
+    console.log(numbers)
+    var special = confirm("Do you want to include special characters in your password?");
   
-  randomPasswordGenerated += minimumNumbers;
-  randomPasswordGenerated += minimumLowerCases;
-  randomPasswordGenerated += minimumUpperCases;
-  randomPasswordGenerated += minimumSpecialCharacters;
+    var upperCases = confirm("Do you want to included upper case letters in your password?");
+  
+    var lowerCases = confirm("Do you want to include lower case letters in your password?");
+    
+    var minimumCount = 0;
+//Begins evaluation of the user's response
 
-
-  return randomPasswordGenerated;
-
+//If the user selected yes to numbers then generate a random number between 1 and 9
+    if (numbers){
+      var number = Math.floor((Math.random() * 10) + 1);
+      console.log(number)
+      password.push(number)
+      console.log('Passowrd: ' + number)
+    }
+    //If the user selected yes to special characters then generate a random special character
+    var specialCh = '!@#$%^&*'
+   if (special){
+   var random = Math.floor((Math.random() * 10) + 1)
+   } if (random == '1'){
+   console.log('!')
+   } else if (random == '2'){
+     console.log('@')
+   }else if (random == '3') {
+     console.log('#')
+   } else if (random == '4') {
+     console.log('$')
+   }else if (random == '5') {
+     console.log('%')
+   }else if (random =='6'){
+   console.log('^')
+} else if (random == '7'){
+  console.log('&')
+} else if (random == '8'){
+  console.log('*')
+} else if (random == '9'){
+  console.log('(')
+}else if (random == '10') {
+  console.log(')')
+} else {
+  console.log('$')
 }
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
