@@ -3,14 +3,9 @@ var generateBtn = document.querySelector("#generate");
 
 //Creates empty array for pushing values to
 let password = [];
-// Write password to the #password input
-function writePassword() {
-  // var password = generatePassword();
+
+// var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 //Beginning of main function
 function generatePassword() {
@@ -32,10 +27,8 @@ function generatePassword() {
 
 //If the user selected yes to numbers then generate a random number between 1 and 9
     if (numbers){
-      var number = Math.floor((Math.random() * 10) + 1);
-      console.log(number)
-      password.push(number)
-      console.log('Password: ' + number)
+      var number = Math.floor((Math.random() * 10) + 1);  
+      password.push(number)      
     }
     //If the user selected yes to special characters then generate a random special character
    if (special){
@@ -47,6 +40,9 @@ function generatePassword() {
    if(upperCases){
      upperCaseCharacter(5)
    }
+   console.log(password.join(''))
+   var randomPassword = password.join('')
+   passwordText.textContent = randomPassword;
   };
 
 
