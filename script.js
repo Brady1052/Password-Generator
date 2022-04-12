@@ -11,7 +11,7 @@ let password = [];
 function generatePassword() {
 
   //Function begins by starting with prompts
-    var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be at least 9 characters but less than or equal to 128.");
+    var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be at least 8 characters but less than or equal to 128.");
     console.log(passwordLength)
   
     var numbers = confirm("Do you want to include numbers in your password");
@@ -40,7 +40,7 @@ function generatePassword() {
    if(upperCases){
      upperCaseCharacter(5)
    }
-   console.log(password.join(''))
+   //Displays  generated password
    var randomPassword = password.join('')
    passwordText.textContent = randomPassword;
   };
