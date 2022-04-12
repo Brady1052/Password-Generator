@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -43,6 +41,9 @@ function generatePassword() {
    if (special){
    specialCharacter(5)
    }
+   if(lowerCases){
+     lowerCaseCharacter(5);
+   }
   };
 
 
@@ -60,12 +61,12 @@ function generatePassword() {
 
 
     //Function for generating a random lowercase character
-  function specialCharacter(length){
+  function lowerCaseCharacter(length){
     let result = '';
-    const specialChars = 'abcdefghijklmnopqrstuvwxyz'
-    const specialCharLength = specialChars.length;
+    const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz'
+    const lowerCaseCharsLength = lowerCaseChars.length;
     for (var i = 0; i < length; i++){
-      result += specialChars.charAt(Math.floor(Math.random()* specialCharLength))
+      result += lowerCaseChars.charAt(Math.floor(Math.random()* lowerCaseCharsLength))
     }
     console.log(result)
     password.push(result)
